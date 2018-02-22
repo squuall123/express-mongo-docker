@@ -1,5 +1,5 @@
 ## ExpressJS + MongoDB Docker
-ExpressJS envirement + DockerDB for data storage.
+ExpressJS envirement + MongoDB for data storage.
 
 ## Set up
 Make sure you have docker and docker-compose installed.
