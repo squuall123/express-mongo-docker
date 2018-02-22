@@ -1,14 +1,28 @@
-version: '2'
+version : '2'
 
 services:
-  express:
-    build: express-server
-    ports:
-      - "3000:3000"
-    links:
-      - database
+ express:
+   build: express-server
+   ports:
+     - 3000:3000
+   links:
+     - mongodb
+     - maildev:maildev
+   depends_on:
+       - mongodb
 
-  database:
-    image: mongo
-    ports:
-      - "27017:27017" 
+ mongodb:
+     image: mongo:latest
+     container_name: "mongodb"
+     environment:
+       - MONGO_DATA_DIR=/data/db
+       - MONGO_LOG_DIR=/dev/null
+     volumes:
+       - ./data/db:/data/db
+     ports:
+         - 27017:27017
+     command: mongod --smallfiles --logpath=/dev/null # --quiet
+ maildev:
+   image: djfarrelly/maildev
+   ports:
+    - 8282:80

@@ -5,6 +5,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 
 const app = express();
+//const api = require('./routes/api.js');
 
 // Parsers for POST data
 app.use(bodyParser.json());
@@ -18,7 +19,7 @@ app.use(function(req, res, next) {
 })
 
 // Set our api routes
-app.use('/', api);
+//app.use('/');
 
 
 /**
